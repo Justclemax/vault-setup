@@ -125,12 +125,22 @@ When you select email notification, the script sends via:
 
 ## Uninstall
 
-**macOS / Linux**
+**macOS / Linux** — sans télécharger le fichier au préalable :
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/Justclemax/vault-setup/main/vault-setup.sh) --uninstall
+```
+
+Ou si le fichier est déjà présent :
 ```bash
 bash vault-setup.sh --uninstall
 ```
 
-**Windows**
+**Windows** — sans télécharger le fichier au préalable (PowerShell en admin) :
+```powershell
+$f="$env:TEMP\vs.ps1"; irm https://raw.githubusercontent.com/Justclemax/vault-setup/main/vault-setup.ps1 -OutFile $f; & $f -Uninstall; Remove-Item $f
+```
+
+Ou si le fichier est déjà présent :
 ```powershell
 PowerShell -ExecutionPolicy Bypass -File vault-setup.ps1 -Uninstall
 ```
