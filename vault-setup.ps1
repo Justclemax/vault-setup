@@ -564,6 +564,10 @@ function Do-Uninstall {
     if (Test-Path $SECURE_DIR) { Remove-Item $SECURE_DIR -Recurse -Force }
 
     ok "Vault uninstalled — all data removed"
+    if ($PSCommandPath -and (Test-Path $PSCommandPath)) {
+        Remove-Item -Force $PSCommandPath -ErrorAction SilentlyContinue
+        ok "Script supprimé : $PSCommandPath"
+    }
     Exit 0
 }
 

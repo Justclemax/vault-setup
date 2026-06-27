@@ -732,6 +732,11 @@ do_uninstall() {
 
     rm -rf "$SECURE_DIR"
     ok "Vault uninstalled — all data removed"
+    # Supprimer le script lui-même (seulement si c'est un vrai fichier, pas un pipe)
+    if [[ -f "$0" ]]; then
+        rm -f "$0"
+        ok "Script supprimé : $0"
+    fi
     exit 0
 }
 
