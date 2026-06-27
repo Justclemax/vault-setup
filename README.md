@@ -151,6 +151,7 @@ Removes:
 - ntfy Docker container
 - `/etc/hosts` (or `C:\Windows\System32\drivers\etc\hosts`) entries
 - launchd / systemd service (macOS/Linux) or Scheduled Task (Windows)
+- Le script lui-même — aucune trace laissée sur l'ordinateur
 
 ---
 
