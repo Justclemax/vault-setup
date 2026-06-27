@@ -184,8 +184,4 @@ Logs:
 | Fedora | 39, 40 | `vault-setup.sh` |
 | Windows | 10, 11 | `vault-setup.ps1` |
 
----
 
-## License
-
-MIT
