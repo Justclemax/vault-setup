@@ -102,20 +102,39 @@ function Show-Banner {
     Clear-Host
     $c = "Cyan"
     Write-Host ""
+    Write-Host "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠻⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⣿⣿⣿⣿⣿⣏⢩⣛⠿⢿⢰⡙⣿⢟⣯⡞⣼⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⣿⣿⠿⠿⠿⠿⠆⣿⣿⣦⣼⣷⣶⣿⣿⣧⣽⣶⢇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⣿⣿⣷⣌⠻⣿⣿⣿⣿⣿⣿⣿⡿⣿⣿⣿⣿⣿⡶⢟⣭⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⣿⡿⠟⣡⣶⣿⣿⡿⠋⢉⣠⣤⣄⠈⢿⡟⢯⢿⣷⣯⣛⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⠉⠉⠁⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⡿⠋⢴⣿⣿⣿⣿⠋⣠⣎⢿⣿⣿⡿⠇⢀⣙⠀⠁⠙⣏⢿⣾⣿⣿⣿⣿⢟⣝⠿⠟⠋⠁⠀⠀⠀⠀⢀⣀⣀⣀⣤⣤⣤⣈⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⣿⣶⢆⣽⣿⡟⣺⣿⣇⠿⣋⡵⣴⣿⠿⣿⣿⣷⣤⣨⢎⠛⠛⠛⠛⠋⢸⣿⣧⠀⢀⣠⣤⣶⣾⣿⣿⠟⠻⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⡿⢣⣾⢿⣿⡇⠹⠿⢣⣾⣿⣿⣿⣴⣿⡿⢋⣵⣶⠇⣼⣰⣤⣤⣤⣤⢸⣿⣿⡏⣿⣿⣿⣿⠟⠉⠀⠀⢀⣤⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⣿⣿⣿⡿⠙⡇⠀⣼⢫⠚⢿⣿⣿⣿⣿⣿⡿⣏⣥⣷⣿⣻⣿⣿⣿⣿⣼⣿⣿⣧⡿⠟⠋⠀⠀⣀⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⣿⣿⣿⣿⠀⣄⣄⡳⣶⣶⣿⣿⣿⡿⢋⠴⢛⠘⣿⣹⡴⣏⠙⠛⠛⠛⢻⣿⣿⣿⠀⢀⣠⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⣿⣿⣿⣿⣿⣿⣿⣏⣍⢋⣼⣿⠋⠔⠉⢋⣴⣾⣿⣿⡗⠀⢰⣶⡦⡔⡂⣿⣿⣿⡈⠉⠻⠿⠛⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣞⢡⢾⠶⣶⣮⣶⣿⣿⠟⠋⠀⠀⠈⠱⢞⣭⠌⣿⣿⣿⣇⣤⣶⣶⡄⣠⣼⡻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡬⢿⡿⠿⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣧⣿⣿⣿⣧⢻⣿⣿⡼⣶⣝⡻⠿⠟⠛⠛⠛⠋⠉⠉⠉⠉⠉⠉⠉⢉⣉⣥⣾" -ForegroundColor $c
+    Write-Host "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⡄⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣿⣿⣿⣮⡸⣿⣿⣿⣯⢿⣿⣷⣹⣿⣿⠇⠀⣀⣤⣤⣤⣶⣶⠶⢛⣩⣵⣾⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠁⠀⠀⠰⠀⠀⠀⠀⠀⠀⠀⢰⣿⣿⣿⠿⠿⠿⠷⢹⣿⣿⣿⢺⣿⣿⢇⣿⡏⠀⠀⠘⠿⠛⣋⣥⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠋⠀⠀⠀⢿⣿⣶⣶⠦⣔⣒⣒⣒⡛⣭⠋⡭⡁⣶⣷⢷⢸⣿⣿⡿⣾⣿⠏⢾⠏⣾⣶⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠁⠀⠀⠀⠀⠀⠀⢛⣭⣶⣯⣹⣿⠟⣻⣿⢰⢟⣀⣣⣭⣼⣆⢿⡿⢟⣹⢿⣫⣾⠗⢁⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⡾⢿⣷⣶⣶⠶⠿⢛⣭⡲⢾⣿⣿⣿⣿⣿⣾⡷⠗⠚⠛⠛⠁⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⢀⠁⠀⠀⠀⠀⠀⣠⠟⣵⣿⣆⠉⠙⠛⠛⠛⠉⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⣿⣿⣿⣿⣿⣿⣿⣿⡆⠀⣀⠀⠀⠀⠀⢸⠀⠀⠀⢀⣴⣿⢫⣾⣿⣿⣿⣷⣦⣄⣀⣀⠀⠀⠀⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⣿⣿⣶⡆⠀⠈⠀⠀⠀⢸⣿⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⣶⡆⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⣿⣿⣿⠇⠀⡘⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⣰⣿⡇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣄⣿⣿⣿⠀⢰⠁⠀⠀⢸⣿⣿⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⡿⢡⣿⣿⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣸⣿⣿⣿⠀⡈⠀⠀⠀⢸⣿⣿⣿⠟⢋⣼⣿⣿⣿⣿⣿⣿⢣⣿⣿⣿⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⣿⣿⣿⡟⠀⡇⠀⠀⠀⠸⠟⠋⢁⣴⣿⣿⣿⣿⣿⣿⣿⣳⣿⣿⣿⡇⠀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⣿⣿⣿⣿⣿⣿⣿⣿⢹⣿⣤⣉⠁⠀⡇⠀⠀⠀⢀⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣸⣿⣟⣁⣀⣀⣇⣀⣀⣀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⣀⣀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" -ForegroundColor $c
+    Write-Host ""
     Write-Host "  ╔══════════════════════════════════════════════════════════════╗" -ForegroundColor $c
-    Write-Host "  ║                                                              ║" -ForegroundColor $c
-    Write-Host "  ║   ██╗   ██╗ █████╗ ██╗   ██╗██╗  ████████╗                 ║" -ForegroundColor $c
-    Write-Host "  ║   ██║   ██║██╔══██╗██║   ██║██║  ╚══██╔══╝                 ║" -ForegroundColor $c
-    Write-Host "  ║   ██║   ██║███████║██║   ██║██║     ██║                     ║" -ForegroundColor $c
-    Write-Host "  ║   ╚██╗ ██╔╝██╔══██║██║   ██║██║     ██║                     ║" -ForegroundColor $c
-    Write-Host "  ║    ╚████╔╝ ██║  ██║╚██████╔╝███████╗██║                     ║" -ForegroundColor $c
-    Write-Host "  ║     ╚═══╝  ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝                     ║" -ForegroundColor $c
-    Write-Host "  ║                                                              ║" -ForegroundColor $c
-    Write-Host "  ║   ┌──────────────────────────────────────────────────────┐  ║" -ForegroundColor $c
-    Write-Host ("  ║   │  🔐  {0,-22} {1,24}  │  ║" -f "Universal Secrets Manager", "v$VERSION") -ForegroundColor $c
-    Write-Host ("  ║   │      {0,-22} {1,24}  │  ║" -f "Windows", "EN / Français") -ForegroundColor $c
-    Write-Host "  ║   └──────────────────────────────────────────────────────┘  ║" -ForegroundColor $c
-    Write-Host "  ║                                                              ║" -ForegroundColor $c
+    Write-Host ("  ║   V A U L T  ·  S H I N O B I  ·  K O N O H A      v{0,-6}║" -f $VERSION) -ForegroundColor $c
+    Write-Host "  ╠══════════════════════════════════════════════════════════════╣" -ForegroundColor $c
+    Write-Host "  ║   Code like a Shinobi  ·  Strike Fast  ·  Leave No Trace   ║" -ForegroundColor $c
+    Write-Host "  ║   macOS · Linux · Windows                  EN / Français    ║" -ForegroundColor $c
     Write-Host "  ╚══════════════════════════════════════════════════════════════╝" -ForegroundColor $c
     Write-Host ""
 }
