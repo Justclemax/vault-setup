@@ -1,6 +1,6 @@
 # 🔐 vault-setup
 
-> Universal HashiCorp Vault installer — macOS · Linux · bilingual (EN/FR)
+> Universal HashiCorp Vault installer — macOS · Linux · Windows · bilingual (EN/FR)
 
 One script that installs and configures a secure, local Vault instance with HTTPS (Caddy), mobile push notifications (ntfy), and email delivery of credentials.
 
@@ -8,7 +8,7 @@ One script that installs and configures a secure, local Vault instance with HTTP
 
 ## Features
 
-- **Cross-platform** — macOS and Linux (Debian/Ubuntu, RHEL/Fedora, Arch)
+- **Cross-platform** — macOS, Linux (Debian/Ubuntu, RHEL/Fedora, Arch) and Windows
 - **Bilingual** — English and French, chosen at startup
 - **Two modes** — Development (quick) or Production (persistent data, auto-start service)
 - **Auto-dependency check** — detects missing tools and installs them automatically
@@ -29,23 +29,26 @@ The script checks for these and offers to install them automatically:
 | `vault` | HashiCorp Vault |
 | `caddy` | HTTPS reverse proxy |
 | `docker` | Runs the ntfy notification server |
-| `openssl` | Password hashing |
+| `openssl` | Password hashing (macOS/Linux only) |
 | `curl` | Sending ntfy notifications |
 
-> **Windows users** — this script requires WSL (Windows Subsystem for Linux).  
-> Open PowerShell as Administrator and run `wsl --install`, then use this script inside Ubuntu.
+> **Windows** — uses `winget` (built-in on Windows 10/11) or Chocolatey. No WSL needed.
 
 ---
 
 ## Quick start
 
+**macOS / Linux**
 ```bash
-# Download
-curl -O https://raw.githubusercontent.com/YOUR_USERNAME/vault-setup/main/vault-setup.sh
+curl -O https://raw.githubusercontent.com/Justclemax/vault-setup/main/vault-setup.sh
 chmod +x vault-setup.sh
-
-# Run
 bash vault-setup.sh
+```
+
+**Windows** — open PowerShell as Administrator:
+```powershell
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Justclemax/vault-setup/main/vault-setup.ps1" -OutFile vault-setup.ps1
+PowerShell -ExecutionPolicy Bypass -File vault-setup.ps1
 ```
 
 The script will ask you:
@@ -122,16 +125,22 @@ When you select email notification, the script sends via:
 
 ## Uninstall
 
+**macOS / Linux**
 ```bash
 bash vault-setup.sh --uninstall
 ```
 
+**Windows**
+```powershell
+PowerShell -ExecutionPolicy Bypass -File vault-setup.ps1 -Uninstall
+```
+
 Removes:
-- Vault process and data (`~/.vault-secure/`)
+- Vault process and data (`~/.vault-secure/` or `%USERPROFILE%\.vault-secure\`)
 - Caddy process
 - ntfy Docker container
-- `/etc/hosts` entries added by this script
-- launchd / systemd service
+- `/etc/hosts` (or `C:\Windows\System32\drivers\etc\hosts`) entries
+- launchd / systemd service (macOS/Linux) or Scheduled Task (Windows)
 
 ---
 
@@ -167,12 +176,13 @@ Logs:
 
 ## Tested on
 
-| OS | Version |
-|----|---------|
-| macOS | Sequoia 15, Sonoma 14 |
-| Ubuntu | 22.04, 24.04 |
-| Debian | 12 |
-| Fedora | 39, 40 |
+| OS | Version | Script |
+|----|---------|--------|
+| macOS | Sequoia 15, Sonoma 14 | `vault-setup.sh` |
+| Ubuntu | 22.04, 24.04 | `vault-setup.sh` |
+| Debian | 12 | `vault-setup.sh` |
+| Fedora | 39, 40 | `vault-setup.sh` |
+| Windows | 10, 11 | `vault-setup.ps1` |
 
 ---
 
