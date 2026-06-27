@@ -47,8 +47,32 @@ step()  {
 
 # ── ASCII banner ────────────────────────────────────────────────────
 show_banner() {
+    local _W
+    _W=$(tput cols 2>/dev/null || echo 80)
     tput civis 2>/dev/null
     echo -e "${C}"
+
+    # ── Naruto court à travers l'écran ────────────────────────────
+    printf '\n\n\n\n\n'
+    local _p=0 _f=0
+    while [ "$_p" -lt $((_W - 14)) ]; do
+        printf '\033[5A'
+        local _s
+        _s=$(printf '%*s' "$_p" '')
+        case $((_f % 4)) in
+            0) printf "\033[2K%s  _o>\n\033[2K%s  /|_\n\033[2K%s >>|\n\033[2K%s  / \\\n\033[2K%s_/\n"  "$_s" "$_s" "$_s" "$_s" "$_s" ;;
+            1) printf "\033[2K%s  _o>\n\033[2K%s  /|_\n\033[2K%s >>|\n\033[2K%s _/\\\n\033[2K%s\n"     "$_s" "$_s" "$_s" "$_s" "$_s" ;;
+            2) printf "\033[2K%s  _o>\n\033[2K%s  /|_\n\033[2K%s >>|\n\033[2K%s  /\\\n\033[2K%s  \\\n" "$_s" "$_s" "$_s" "$_s" "$_s" ;;
+            3) printf "\033[2K%s  _o>\n\033[2K%s  /|_\n\033[2K%s >>|\n\033[2K%s  /\n\033[2K%s_/ \\\n"  "$_s" "$_s" "$_s" "$_s" "$_s" ;;
+        esac
+        sleep 0.05
+        _p=$((_p + 3)); _f=$((_f + 1))
+    done
+    printf '\033[5A\033[2K\n\033[2K\n\033[2K\n\033[2K\n\033[2K'
+    printf '\033[5A'
+    sleep 0.15
+
+    # ── Art Braille ligne par ligne ────────────────────────────────
     while IFS= read -r _line; do
         echo "$_line"
         sleep 0.04

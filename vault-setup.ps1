@@ -102,7 +102,37 @@ function Show-Banner {
     Clear-Host
     $c = "Cyan"
     try { [Console]::CursorVisible = $false } catch {}
+    $W = $Host.UI.RawUI.WindowSize.Width
     Write-Host ""
+
+    # ── Naruto court à travers l'écran ────────────────────────────
+    $frames = @(
+        @("  _o>","  /|_",">>|  ","  / \","_/   "),
+        @("  _o>","  /|_",">>|  "," _/\ ","     "),
+        @("  _o>","  /|_",">>|  ","  /\ ","  \  "),
+        @("  _o>","  /|_",">>|  ","  /  ","_/ \ ")
+    )
+    for ($i = 0; $i -lt 5; $i++) { Write-Host "" }
+    $p = 0; $fi = 0
+    while ($p -lt ($W - 14)) {
+        $esc = [char]27
+        Write-Host -NoNewline "${esc}[5A"
+        $pad = " " * $p
+        $frame = $frames[$fi % 4]
+        foreach ($ln in $frame) {
+            Write-Host "${esc}[2K${pad}${ln}" -ForegroundColor $c
+        }
+        Start-Sleep -Milliseconds 50
+        $p += 3; $fi++
+    }
+    # Effacer les 5 lignes d'animation
+    $esc = [char]27
+    Write-Host -NoNewline "${esc}[5A"
+    for ($i = 0; $i -lt 5; $i++) { Write-Host "${esc}[2K" }
+    Write-Host -NoNewline "${esc}[5A"
+    Start-Sleep -Milliseconds 150
+
+    # ── Art Braille ligne par ligne ────────────────────────────────
     $art = @(
         "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠻⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
         "⣿⣿⣿⣿⣿⣿⣏⢩⣛⠿⢿⢰⡙⣿⢟⣯⡞⣼⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
