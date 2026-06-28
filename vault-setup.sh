@@ -315,7 +315,12 @@ select_mode() {
     echo "  $(T mode_dev)"
     echo "  $(T mode_prod)"
     read -rp "> " _m
-    [[ "${_m:-1}" == "2" ]] && MODE="production" || MODE="development"
+    if [[ "${_m:-}" == "2" ]]; then
+        MODE="production"
+    else
+        MODE="development"
+    fi
+    ok "Mode: ${MODE}"
 }
 
 select_notification() {
@@ -341,6 +346,7 @@ LOCAL_HOST="localhost"
 setup_domain() {
     read -rp "$(T domain_q)" _d
     VAULT_DOMAIN="${_d:-vault.local}"
+    ok "Domain: ${VAULT_DOMAIN}"
 
     LOCAL_HOST=$(scutil --get LocalHostName 2>/dev/null \
               || hostname -s 2>/dev/null \
@@ -667,10 +673,10 @@ show_summary() {
     echo -e "${G}  ║${N}                                                                  ${G}║${N}"
     echo -e "${G}  ╠${w}╣${N}"
     echo -e "${G}  ║${N}                                                                  ${G}║${N}"
-    printf  "${G}  ║${N}   🌐  %-12s ${C}https://%-38s${N}  ${G}║${N}\n"  "URL"      "${VAULT_DOMAIN}"
-    printf  "${G}  ║${N}   👤  %-12s ${B}%-46s${N}  ${G}║${N}\n"          "Username" "vault"
-    printf  "${G}  ║${N}   🔑  %-12s ${Y}%-46s${N}  ${G}║${N}\n"          "Password" "${SECRET_PASS}"
-    printf  "${G}  ║${N}   🎫  %-12s ${B}%-46s${N}  ${G}║${N}\n"          "Token"    "${ROOT_TOKEN}"
+    printf  "${G}  ║${N}   🌐  %-12s ${C}https://%-36s${N}  ${G}║${N}\n"  "URL"      "${VAULT_DOMAIN}"
+    printf  "${G}  ║${N}   👤  %-12s ${B}%-44s${N}  ${G}║${N}\n"          "Username" "vault"
+    printf  "${G}  ║${N}   🔑  %-12s ${Y}%-44s${N}  ${G}║${N}\n"          "Password" "${SECRET_PASS}"
+    printf  "${G}  ║${N}   🎫  %-12s ${B}%-44s${N}  ${G}║${N}\n"          "Token"    "${ROOT_TOKEN}"
     echo -e "${G}  ║${N}                                                                  ${G}║${N}"
 
     if [[ "$MODE" == "production" && ${#UNSEAL_KEYS[@]} -gt 0 ]]; then
@@ -678,17 +684,17 @@ show_summary() {
         echo -e "${G}  ║${N}   ${Y}⚠️  $(T unseal_warn)${N}"
         echo -e "${G}  ║${N}                                                                  ${G}║${N}"
         for key in "${UNSEAL_KEYS[@]}"; do
-            printf  "${G}  ║${N}      ${Y}•  %-62s${N}  ${G}║${N}\n" "$key"
+            printf  "${G}  ║${N}      ${Y}•  %-55s${N}  ${G}║${N}\n" "$key"
         done
-        printf  "${G}  ║${N}      ${C}saved → %-56s${N}  ${G}║${N}\n" "$SECURE_DIR/.vault-keys"
+        printf  "${G}  ║${N}      ${C}saved → %-50s${N}  ${G}║${N}\n" "$SECURE_DIR/.vault-keys"
         echo -e "${G}  ║${N}                                                                  ${G}║${N}"
     fi
 
     echo -e "${G}  ╠${w}╣${N}"
-    printf  "${G}  ║${N}   📄  Vault log  ${C}%-50s${N}  ${G}║${N}\n" "$VAULT_LOG"
-    printf  "${G}  ║${N}   📄  Caddy log  ${C}%-50s${N}  ${G}║${N}\n" "$CADDY_LOG"
+    printf  "${G}  ║${N}   📄  Vault log  ${C}%-46s${N}  ${G}║${N}\n" "$VAULT_LOG"
+    printf  "${G}  ║${N}   📄  Caddy log  ${C}%-46s${N}  ${G}║${N}\n" "$CADDY_LOG"
     echo -e "${G}  ║${N}                                                                  ${G}║${N}"
-    printf  "${G}  ║${N}   🗑️   Uninstall  ${B}bash %-49s${N}  ${G}║${N}\n" "$(basename "$0") --uninstall"
+    printf  "${G}  ║${N}   🗑️   Uninstall  ${B}bash %-40s${N}  ${G}║${N}\n" "$(basename "$0") --uninstall"
     echo -e "${G}  ║${N}                                                                  ${G}║${N}"
     echo -e "${G}  ╚${W}╝${N}"
     echo ""
@@ -732,10 +738,16 @@ do_uninstall() {
 
     rm -rf "$SECURE_DIR"
     ok "Vault uninstalled — all data removed"
-    # Supprimer le script lui-même (seulement si c'est un vrai fichier, pas un pipe)
+    # Supprimer le script lui-même — sauf si on est dans un dépôt git cloné
     if [[ -f "$0" ]]; then
-        rm -f "$0"
-        ok "Script supprimé : $0"
+        local _dir
+        _dir="$(cd "$(dirname "$0")" 2>/dev/null && pwd)"
+        if git -C "$_dir" rev-parse --git-dir &>/dev/null 2>&1; then
+            info "Script conservé (dépôt git détecté — supprimez-le manuellement si besoin)"
+        else
+            rm -f "$0"
+            ok "Script supprimé : $0"
+        fi
     fi
     exit 0
 }
