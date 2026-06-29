@@ -195,4 +195,15 @@ Logs:
 | Fedora | 39, 40 | `vault-setup.sh` |
 | Windows | 10, 11 | `vault-setup.ps1` |
 
+---
+
+## Known issues fixed
+
+| # | Symptom | Cause | Fix |
+|---|---------|-------|-----|
+| 1 | Summary box déborde sur certains terminaux | Les emoji (4 bytes UTF-8) faussent le comptage de `printf` | Widths ajustés pour chaque ligne |
+| 2 | Mode production s'exécutait en dev sans avertissement | Aucun feedback après la sélection du mode | `✅ Mode: production` affiché immédiatement après choix |
+| 3 | Mauvais domaine utilisé (hostname à la place de `vault.local`) | Aucune confirmation visible après la saisie | `✅ Domain: vault.local` affiché immédiatement après saisie |
+| 4 | `--uninstall` supprimait le script dans un dépôt git cloné | Pas de vérification git avant `rm -f "$0"` | Vérification `git rev-parse` — script conservé si dans un repo |
+
 

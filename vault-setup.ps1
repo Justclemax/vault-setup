@@ -256,6 +256,7 @@ function Select-Mode {
     Write-Host "    $(T mode_prod)"
     $m = Read-Host "  > "
     if ($m -eq "2") { $script:MODE = "production" } else { $script:MODE = "development" }
+    ok "Mode: $($script:MODE)"
 }
 
 function Select-Notification {
@@ -278,10 +279,11 @@ function Select-Notification {
 function Setup-Domain {
     $d = Read-Host "  $(T domain_q)"
     if ($d) { $script:VAULT_DOMAIN = $d }
+    ok "Domain: $($script:VAULT_DOMAIN)"
     $hosts = Get-Content $HOSTS_FILE -EA SilentlyContinue
     if (-not ($hosts -match [regex]::Escape($script:VAULT_DOMAIN))) {
         Add-Content -Path $HOSTS_FILE -Value "127.0.0.1 $($script:VAULT_DOMAIN)"
-        ok "Domain: $($script:VAULT_DOMAIN) → 127.0.0.1"
+        ok "$($script:VAULT_DOMAIN) → 127.0.0.1"
     }
 }
 
@@ -540,7 +542,7 @@ function Show-Summary {
     Write-Host "  ║$(("  📄  Vault log  $VAULT_LOG").PadRight(66))║" -ForegroundColor Cyan
     Write-Host "  ║$(("  📄  Caddy log  $CADDY_LOG").PadRight(66))║" -ForegroundColor Cyan
     Write-Host "  ║$(" " * 66)║" -ForegroundColor Green
-    Write-Host "  ║$(("  🗑️   Uninstall  PowerShell -File vault-setup.ps1 -Uninstall").PadRight(66))║" -ForegroundColor White
+    Write-Host "  ║$(("  🗑️   Uninstall  PowerShell -File vault-setup.ps1 -Uninstall").PadRight(67))║" -ForegroundColor White
     Write-Host "  ║$(" " * 66)║" -ForegroundColor Green
     Write-Host "  ╚$W╝" -ForegroundColor Green
     Write-Host ""
@@ -565,8 +567,14 @@ function Do-Uninstall {
 
     ok "Vault uninstalled — all data removed"
     if ($PSCommandPath -and (Test-Path $PSCommandPath)) {
-        Remove-Item -Force $PSCommandPath -ErrorAction SilentlyContinue
-        ok "Script supprimé : $PSCommandPath"
+        $scriptDir = Split-Path -Parent $PSCommandPath
+        $isGit = & git -C $scriptDir rev-parse --git-dir 2>$null
+        if ($LASTEXITCODE -eq 0) {
+            info "Script conservé (dépôt git détecté — supprimez-le manuellement si besoin)"
+        } else {
+            Remove-Item -Force $PSCommandPath -ErrorAction SilentlyContinue
+            ok "Script supprimé : $PSCommandPath"
+        }
     }
     Exit 0
 }
